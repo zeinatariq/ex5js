@@ -2,7 +2,8 @@ let registerForm = document.querySelector("#Register form");
 let registerInputs = registerForm.querySelectorAll("input");
 let students = [];
 let id = 0;
-let tableBody = document.querySelector("#Data tbody");
+let tableBody = document.querySelector("#Data tbody")
+    ;
 
 let regexInputs = {
     firstName: /^[A-Za-z]+$/,
@@ -10,35 +11,32 @@ let regexInputs = {
     email: /^[A-Za-z][A-Za-z_0-9\.]+@(gmail|yahoo)\.(com|org)$/,
     age: /^[0-9]{2}$/,
     phone: /^(02)?01(0|1|2|5)[0-9]{8}$/,
-};
+},
+    searchInput= document.querySelector("#SearchInput");
 
-
+if (localStorage.getItem('students') === null) {
+    updateLocalstorage();
+    
+} else {
+    students = JSON.parse(localStorage.getItem('students'));
+    id = students[students.length - 1]?.id ?? 0;
+    showStudents(students);
+}
 
 registerForm.addEventListener("submit", function (e) {
+
+    let formType = registerForm.getAttribute('data-type');
     e.preventDefault();
-
-
-    let focusInput = registerForm.querySelector("input:focus");
-    focusInput?.blur();
-
-    let inValidInput = document.querySelector("input.is-invalid");
-    if (inValidInput !== null) {
-        return;
-
-    }
-    let student = getStudent(++id);
-
-    
-    if (!validateStudent(student)) {
-        id--; 
-        return;
+    if (formType == 'add') {
+        addStudent();
+        
+    } else if (formType == 'edit') {
+        editStudent();
     }
 
-    students.push(student);
-    console.log(students);
+   
+});
 
-    addStudent(student);
-    showStudent(student);
-
-    this.reset();
+searchInput.addEventListener("keyup", function () {
+    search(this.value);
 });

@@ -23,4 +23,8 @@ body {
     color: var(--mainColor);
 }
 
+table.table{
+    width: max-content;
+    min-width: 100%;
+}
 

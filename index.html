@@ -23,14 +23,14 @@
                 <img src="./images_ex5/images/logo-be01d065.png" alt="logo">
             </div>
             <div class="body">
-                <form action="" class=" m-auto py-3 px-4 rounded-4">
+                <form action="" class=" m-auto py-3 px-4 rounded-4" data-type="add">
                     <h3 class="mb-3 text-center">Students System</h3>
                     <div class="input-group mb-3">
                         <span class="input-group-text">
                             <i class="fa-solid fa-user"></i>
                         </span>
                         <input type="text" class="form-control" placeholder="First Name *" name="firstName"
-                            onblur="checkInput(this)">
+                            onblur="checkInput(this)" data-valid="false">
 
                     </div>
                     <p class="alert alert-danger d-none" dta-error-name="firstName" role="alert"></p>
@@ -40,7 +40,7 @@
                             <i class="fa-solid fa-user"></i>
                         </span>
                         <input type="text" class="form-control" placeholder="Last Name *" name="lastName"
-                            onblur="checkInput(this)">
+                            onblur="checkInput(this)" data-valid="false">
                     </div>
                     <p class="alert alert-danger d-none" dta-error-name="lastName" role="alert"></p>
 
@@ -49,7 +49,7 @@
                             <i class="fa-solid fa-envelope"></i>
                         </span>
                         <input type="text" class="form-control" placeholder="Email *" name="email"
-                            onblur="checkInput(this)">
+                            onblur="checkInput(this)" data-valid="false">
                     </div>
                     <p class="alert alert-danger d-none" dta-error-name="email" role="alert"></p>
 
@@ -58,7 +58,7 @@
                             <i class="fa-solid fa-hashtag"></i>
                         </span>
                         <input type="text" class="form-control" name="age" placeholder="Age *"
-                            onblur="checkInput(this)">
+                            onblur="checkInput(this)" data-valid="false">
                     </div>
                     <p class="alert alert-danger d-none" dta-error-name="age" role="alert"></p>
 
@@ -67,7 +67,7 @@
                             <i class="fa-solid fa-mobile-button"></i>
                         </span>
                         <input type="text" class="form-control" placeholder="Phone *" name="phone"
-                            onblur="checkInput(this)">
+                            onblur="checkInput(this)" data-valid="false">
 
 
                     </div>
@@ -85,7 +85,7 @@
             <span class="input-group-text">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </span>
-            <input type="text" class="form-control" name="Search" placeholder="Search...">
+            <input type="text" class="form-control" name="Search" id="SearchInput" placeholder="Search...">
         </div>
     </section>
 
@@ -104,6 +104,9 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td id="TableAlert" class="table-warning text-center" colspan="7 ">There are no data</td>
+                    </tr>
 
                 </tbody>
             </table>
