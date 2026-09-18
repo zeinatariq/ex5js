@@ -107,6 +107,9 @@ function resetForm() {
     delete registerForm.dataset.studentId;
 }
 
+function updateLocalstorage() {
+    localStorage.setItem('students', JSON.stringify(students));
+}
 
 function getStudentIndex(id) {
     return students.findIndex((student) => student.id == id);
