@@ -65,7 +65,7 @@ function checkInput(input) {
     let inputName = input.name,
         inputValue = input.value,
         isEmpty = inputValue === "",
-        errorEle = document.querySelector(`p.alert[dta-error-name="${inputName}"]`),
+        errorEle = document.querySelector(`p.alert[data-error-name="${inputName}"]`),
         isInvalid = !regexInputs[inputName].test(inputValue),
         errorMsg = "";
 
@@ -75,20 +75,20 @@ function checkInput(input) {
         errorMsg = "Invalid field.";
     }
 
-    // incorrect
     if (isEmpty || isInvalid) {
         input.classList.add("is-invalid");
         input.classList.remove("is-valid");
-        errorEle.textContent = errorMsg;
-        errorEle.classList.remove('d-none');
-        input.classList.remove("is-valid");
+        if (errorEle) {
+            errorEle.textContent = errorMsg;
+            errorEle.classList.remove('d-none');
+        }
         input.dataset.valid = false;
-
-        //correct
     } else {
         input.classList.remove("is-invalid");
         input.classList.add("is-valid");
-        errorEle.classList.add('d-none');
+        if (errorEle) {
+            errorEle.classList.add('d-none');
+        }
         input.dataset.valid = true;
     }
 }
