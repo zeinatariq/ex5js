@@ -9,7 +9,7 @@ let regexInputs = {
     firstName: /^[A-Za-z]+$/,
     lastName: /^[A-Za-z]+$/,
     email: /^[A-Za-z][A-Za-z_0-9\.]+@(gmail|yahoo)\.(com|org)$/,
-    age: /^[0-9]{2}$/,
+    age: /^[1-9][0-9]?$/,
     phone: /^(02)?01(0|1|2|5)[0-9]{8}$/,
 },
     searchInput= document.querySelector("#SearchInput");
